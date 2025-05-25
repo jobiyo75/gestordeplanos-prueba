@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home auth{% endblock %}
+
+{% block content %}
+    <h2>Bienvenido!!</h2>
+    {% if user.is_authenticated %}
+        <p>Estás registrado como: <b>{{ user.username }}</b></p>
+    {% else %}
+        <p>No estás registrado!</p>
+    {% endif %}
+
+    <p>---------------------------------------------</p>
+    <h3>Planos Excel</h3>
+    <p>Importar listado planos desde excel: <a class="btn btn-outline-primary" href="{% url 'importar_planos_excel' %}">Importar planos</a></p>
+    <p>Visualizar listado planos excel: <a class="btn btn-outline-primary" href="{% url 'lista_planos_excel' %}">Lista planos</a></p>
+
+    <p>---------------------------------------------</p>
+    <h3>Planos Revit</h3>
+    <p>Importar listado planos desde csv: <a class="btn btn-outline-primary" href="{% url 'importar_planos_revit' %}">Importar planos</a></p>
+    <p>Visualizar listado planos revit: <a class="btn btn-outline-primary" href="{% url 'lista_planos_revit' %}">Lista planos</a></p>
+
+    <p><li><a class="btn btn-outline-primary" href="{% url 'comparar_planos' %}">Comparar planos</a></li></p>
+
+    <p>---------------------------------------------</p>
+    <h3>Listado planos excel</h3>
+    <p>Número de planos en excel: <!--{{nun_rows}}-->...</p>
+    <p><a href="/list_excel/">Planos Listado Excel</a></p>
+    
+    <h3>Sheets Revit List</h3>
+    <p>Número de sheets en revit: <!--{{nun_rows}}-->...</p>
+    <p><a href="/list_csv/">Sheets Revit List</a></p>
+
+{% endblock %}

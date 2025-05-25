@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Listado de Planos Revit{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de Planos Revit</h2>
+
+    {% if planos %}
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Sheet Number</th>
+                <th>Sheet Name</th>
+                <th>View Subgroup</th>
+                <th>Building Zone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plano in planos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ plano.sheetnumber }}</td>
+                <td>{{ plano.sheetname }}</td>
+                <td>{{ plano.viewsubgroup }}</td>
+                <td>{{ plano.buildingzone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No hay planos importados aún.</p>
+    {% endif %}
+</div>
+{% endblock %}
